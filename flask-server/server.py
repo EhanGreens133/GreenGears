@@ -8,11 +8,13 @@ import os
 
 app = Flask(__name__)
 
-fastf1.Cache.enable_cache(
+cache_dir = 'C:\\Users\\ehan\\.jenkins\\workspace\\GreenGearsApp\\flask-server\\cache'
+fastf1.Cache.enable_cache(cache_dir)
+# fastf1.Cache.enable_cache(
     
-    os.environ['F1_CACHE_PATH']
-    # 'C:/Users/ehan/Desktop/Learning/f1-tel/flask-server/venv'
-    )
+#     os.environ['F1_CACHE_PATH']
+#     # 'C:/Users/ehan/Desktop/Learning/f1-tel/flask-server/venv'
+#     )
 
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 @cache.memoize(timeout=60)
