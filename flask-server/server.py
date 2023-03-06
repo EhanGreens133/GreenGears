@@ -4,11 +4,15 @@ import pandas as pd
 import numpy as np
 from flask_caching import Cache
 import datetime
+import os
 
 app = Flask(__name__)
 
 fastf1.Cache.enable_cache(
-    'C:/Users/ehan/Desktop/Learning/f1-tel/flask-server/venv')
+    
+    os.environ['F1_CACHE_PATH']
+    # 'C:/Users/ehan/Desktop/Learning/f1-tel/flask-server/venv'
+    )
 
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 @cache.memoize(timeout=60)
