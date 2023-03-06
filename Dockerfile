@@ -32,3 +32,10 @@ ENV F1_CACHE_PATH=/app/cache
 # Create the cache directory
 RUN mkdir -p $F1_CACHE_PATH
 CMD ["python", "server.py"]
+
+# Use Vercel's serverless functions to deploy the app
+FROM vercel/vercel:latest
+COPY --from=server /app /app
+WORKDIR /app
+RUN chmod +x server.py
+CMD ["python", "server.py"]
