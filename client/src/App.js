@@ -83,7 +83,7 @@ const App = () => {
   const handleYearChange = (event, value) => {
     setSelectedYear(value);
     axios
-      .get("/schedule", {
+      .get(`${process.env.REACT_APP_API_URL}/schedule`, {
         params: {
           selectedYear: value,
         },
@@ -110,7 +110,7 @@ const App = () => {
 
   const handleLoad = () => {
     axios
-      .get("/lapData", {
+      .get(`${process.env.REACT_APP_API_URL}/lapData`, {
         params: {
           selectedYear: selectedYear,
           selectedSchedule: selectedSchedule,
@@ -282,7 +282,7 @@ const App = () => {
     await setSelectedLap(lapNumber);
     // console.log("nameList", nameList);
     axios
-      .get("/driverData", {
+      .get(`${process.env.REACT_APP_API_URL}/driverData`, {
         params: {
           selectedYear: selectedYear,
           selectedSchedule: selectedSchedule,
@@ -298,7 +298,7 @@ const App = () => {
         console.error(error);
       });
     axios
-      .get("/track", {
+      .get(`${process.env.REACT_APP_API_URL}/track`, {
         params: {
           selectedYear: selectedYear,
           selectedSchedule: selectedSchedule,
